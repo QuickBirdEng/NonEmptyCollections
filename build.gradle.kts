@@ -1,9 +1,11 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompileCommon
+
 plugins {
-    kotlin("multiplatform") version "1.4.21"
+    kotlin("multiplatform") version "1.4.30"
 }
 
-group = "me.balazstoth"
-version = "1.0-SNAPSHOT"
+group = "com.quickbirdstudios"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -34,7 +36,6 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
-    
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
@@ -57,5 +58,11 @@ kotlin {
         }
         val nativeMain by getting
         val nativeTest by getting
+    }
+
+    tasks.withType<KotlinCompileCommon>().configureEach {
+        kotlinOptions {
+            freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+        }
     }
 }
