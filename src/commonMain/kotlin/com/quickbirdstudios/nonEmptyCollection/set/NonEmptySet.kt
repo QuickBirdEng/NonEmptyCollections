@@ -3,11 +3,29 @@ package com.quickbirdstudios.nonEmptyCollection.set
 import com.quickbirdstudios.nonEmptyCollection.NonEmptyCollection
 
 data class NonEmptySet<T> internal constructor(
-    internal val first: T,
-    internal val rest: Set<T>
-) : Set<T> by rest.plusElement(first), NonEmptyCollection<T> {
+    internal val internalRepresentation: InternalRepresentation<T>
+) : Set<T> by internalRepresentation.full, NonEmptyCollection<T> {
 
-    override fun equals(other: Any?): Boolean = toSet() == other
+    internal data class InternalRepresentation<T>(
+        val first: T,
+        val rest: Set<T>
+    ) {
+        val full = rest.plusElement(first)
+        val list by lazy { full.toList() }
+    }
 
-    override fun hashCode(): Int = toSet().hashCode()
+    internal constructor(
+        first: T,
+        rest: Set<T>
+    ) : this(InternalRepresentation(first, rest))
+
+    internal val first
+        get() = internalRepresentation.first
+
+    internal val rest
+        get() = internalRepresentation.rest
+
+    override fun equals(other: Any?): Boolean = internalRepresentation.full == other
+
+    override fun hashCode(): Int = internalRepresentation.full.hashCode()
 }

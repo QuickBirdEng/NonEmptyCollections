@@ -46,4 +46,4 @@ inline fun <InputType, FirstParameter, SecondParameter, OutputType>
     firstParameter: FirstParameter,
     secondParameter: SecondParameter,
     operator: Set<InputType>.(FirstParameter, SecondParameter) -> Set<OutputType>
-): NonEmptySet<OutputType> = toSet().operator(firstParameter, secondParameter).toNonEmptySet()
+): NonEmptySet<OutputType> = asSet().operator(firstParameter, secondParameter).toNonEmptySet()

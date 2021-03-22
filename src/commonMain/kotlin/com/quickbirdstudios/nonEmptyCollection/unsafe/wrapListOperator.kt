@@ -2,7 +2,6 @@
 
 package com.quickbirdstudios.nonEmptyCollection.unsafe
 
-
 import com.quickbirdstudios.nonEmptyCollection.NonEmptyCollection
 import com.quickbirdstudios.nonEmptyCollection.list.NonEmptyList
 import kotlin.experimental.ExperimentalTypeInference
@@ -47,4 +46,4 @@ inline fun <InputType, FirstParameter, SecondParameter, OutputType>
     firstParameter: FirstParameter,
     secondParameter: SecondParameter,
     operator: List<InputType>.(FirstParameter, SecondParameter) -> List<OutputType>
-): NonEmptyList<OutputType> = toList().operator(firstParameter, secondParameter).toNonEmptyList()
+): NonEmptyList<OutputType> = asList().operator(firstParameter, secondParameter).toNonEmptyList()
