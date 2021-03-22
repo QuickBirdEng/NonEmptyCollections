@@ -11,6 +11,9 @@ data class NonEmptyList<T> internal constructor(
         tail: List<T>
     ) : this(InternalRepresentation(head, tail))
 
+    private val full
+        get() = internalRepresentation.full
+
     internal val head
         get() = internalRepresentation.head
 
@@ -25,7 +28,7 @@ data class NonEmptyList<T> internal constructor(
         val set by lazy { full.toSet() }
     }
 
-    override fun equals(other: Any?): Boolean = internalRepresentation.full == other
+    override fun equals(other: Any?): Boolean = full == other
 
-    override fun hashCode(): Int = internalRepresentation.full.hashCode()
+    override fun hashCode(): Int = full.hashCode()
 }

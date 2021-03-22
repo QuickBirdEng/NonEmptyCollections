@@ -19,13 +19,16 @@ data class NonEmptySet<T> internal constructor(
         rest: Set<T>
     ) : this(InternalRepresentation(first, rest))
 
+    private val full
+        get() = internalRepresentation.full
+
     internal val first
         get() = internalRepresentation.first
 
     internal val rest
         get() = internalRepresentation.rest
 
-    override fun equals(other: Any?): Boolean = internalRepresentation.full == other
+    override fun equals(other: Any?): Boolean = full == other
 
-    override fun hashCode(): Int = internalRepresentation.full.hashCode()
+    override fun hashCode(): Int = full.hashCode()
 }
