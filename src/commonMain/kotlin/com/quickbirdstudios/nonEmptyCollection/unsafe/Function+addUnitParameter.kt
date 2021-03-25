@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("NOTHING_TO_INLINE")
 
 package com.quickbirdstudios.nonEmptyCollection.unsafe
 
