@@ -3,7 +3,7 @@
 
 Reduce the need for emptiness checks and reduce unsafe APIs with **NonEmptyCollections**.
 
-You can use `NonEmptyList`s, `NonEmptySet`s and `NonEmptyMap`s to restrict the input of functions to make your code safer and avoid unnecessary runtime exceptions.
+You can use `NonEmptyList`, `NonEmptySet` and `NonEmptyMap` to restrict the input of functions to make your code safer and avoid unnecessary runtime exceptions.
 
 For a detailed explanation see our related article [Non-Empty Collections in Kotlin](https://quickbirdstudios.com/blog/non-empty-collections-kotlin).
 
