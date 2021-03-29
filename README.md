@@ -22,9 +22,9 @@ fun NonEmptyList<Int>.average() = sum() / size
 ```
 
 ```kotlin
-nonEmptyListOf<Int>().average() // This does not comile!❌
+nonEmptyListOf<Int>().average()   // This does not compile! ❌
 
-nonEmptyListOf(1, 2, 3).average() // This does!✅
+nonEmptyListOf(1, 2, 3).average() // This does! ✅
 ```
 
 ## Non-empty Shopping-Cart
