@@ -1,6 +1,8 @@
 # NonEmptyCollections 
 ## Making the world a little more type-safe 🌍🏆
 
+![Cover Image](https://user-images.githubusercontent.com/74978506/112827847-2fb44b00-908f-11eb-9e47-8f00c823d839.jpg)
+
 Reduce the need for emptiness checks and reduce unsafe APIs with **NonEmptyCollections**.
 
 You can use `NonEmptyList`, `NonEmptySet` and `NonEmptyMap` to restrict the input of functions to make your code safer and avoid unnecessary runtime exceptions.
