@@ -1,7 +1,7 @@
 # NonEmptyCollections 
 ## Making the world a little more type-safe 🌍🏆
 
-![Cover Image](https://user-images.githubusercontent.com/74978506/112827847-2fb44b00-908f-11eb-9e47-8f00c823d839.jpg)
+![Cover Image](https://user-images.githubusercontent.com/74978506/112829487-7d31b780-9091-11eb-8182-c5a12ff46a8e.png)
 
 Reduce the need for emptiness checks and reduce unsafe APIs with **NonEmptyCollections**.
 
