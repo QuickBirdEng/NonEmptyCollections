@@ -61,7 +61,7 @@ The devs, who implement `buy`, `share` and `saveTo` don't have to handle the emp
 ```kotlin
 allprojects {
     repositories {
-    	 ...
+        ...
         maven { url = uri("https://jitpack.io") }
     }
 }
@@ -72,7 +72,8 @@ allprojects {
 
 ```kotlin
 dependencies {
-   implementation(project("com.quickbirdstudios:nonEmptyCollection:1.0.0"))
+    ...
+    implementation("com.github.quickbirdstudios.NonEmptyCollections:NonEmptyCollections:1.0.0")
 }
 ```
 
