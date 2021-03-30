@@ -11,15 +11,14 @@ import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptyList
 import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptyMap
 import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptySet
 
-fun <T> List<T>.nonEmptyOr(
+fun <T> List<T>.toNonEmptyListOr(
     alternative: List<T>.() -> NonEmptyList<T>
 ) = if (isEmpty()) alternative() else toNonEmptyList()
 
-fun <T> Set<T>.nonEmptyOr(
+fun <T> Set<T>.toNonEmptySetOr(
     alternative: Set<T>.() -> NonEmptySet<T>
 ) = if (isEmpty()) alternative() else toNonEmptySet()
 
-fun <K, V> Map<K, V>.nonEmptyOr(
+fun <K, V> Map<K, V>.toNonEmptyMapOr(
     alternative: Map<K, V>.() -> NonEmptyMap<K, V>
 ) = if (isEmpty()) alternative() else toNonEmptyMap()
-

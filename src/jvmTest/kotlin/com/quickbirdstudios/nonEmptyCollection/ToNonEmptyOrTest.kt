@@ -6,9 +6,9 @@ import com.quickbirdstudios.nonEmptyCollection.set.nonEmptySetOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class NonEmptyOrTest {
+class ToNonEmptyOrTest {
     @Test
-    fun nonEmptyOr_alternative() {
+    fun toNonEmptyOr_alternative() {
         val alternativeList = nonEmptyListOf(1, 2, 4)
         val list = listOf<Int>()
 
@@ -18,13 +18,13 @@ class NonEmptyOrTest {
         val alternativeMap = nonEmptyMapOf(1 to "3", 2 to "rrr", 4 to "sfgfdgdf")
         val map = mapOf<Int, String>()
 
-        assertEquals(alternativeList, list.nonEmptyOr { alternativeList })
-        assertEquals(alternativeSet, set.nonEmptyOr { alternativeSet })
-        assertEquals(alternativeMap, map.nonEmptyOr { alternativeMap })
+        assertEquals(alternativeList, list.toNonEmptyListOr { alternativeList })
+        assertEquals(alternativeSet, set.toNonEmptySetOr { alternativeSet })
+        assertEquals(alternativeMap, map.toNonEmptyMapOr { alternativeMap })
     }
 
     @Test
-    fun nonEmptyOr_notAlternative() {
+    fun toNonEmptyOr_notAlternative() {
         val alternativeList = nonEmptyListOf(1, 2, 4)
         val list = listOf(45, 54, 666)
 
@@ -34,8 +34,8 @@ class NonEmptyOrTest {
         val alternativeMap = nonEmptyMapOf(1 to "3", 2 to "rrr", 4 to "sfgfdgdf")
         val map = mapOf(69 to "420")
 
-        assertEquals(list, list.nonEmptyOr { alternativeList })
-        assertEquals(set, set.nonEmptyOr { alternativeSet })
-        assertEquals(map, map.nonEmptyOr { alternativeMap })
+        assertEquals(list, list.toNonEmptyListOr { alternativeList })
+        assertEquals(set, set.toNonEmptySetOr { alternativeSet })
+        assertEquals(map, map.toNonEmptyMapOr { alternativeMap })
     }
 }

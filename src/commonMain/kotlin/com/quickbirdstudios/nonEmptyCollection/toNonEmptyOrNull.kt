@@ -8,8 +8,8 @@ import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptyList
 import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptyMap
 import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptySet
 
-fun <T> List<T>.nonEmptyOrNull() = if (isEmpty()) null else toNonEmptyList()
+fun <T> List<T>.toNonEmptyListOrNull() = if (isEmpty()) null else toNonEmptyList()
 
-fun <T> Set<T>.nonEmptyOrNull() = if (isEmpty()) null else toNonEmptySet()
+fun <T> Set<T>.toNonEmptyMapOrNull() = if (isEmpty()) null else toNonEmptySet()
 
-fun <K, V> Map<K, V>.nonEmptyOrNull() = if (isEmpty()) null else toNonEmptyMap()
+fun <K, V> Map<K, V>.toNonEmptyMapOrNull() = if (isEmpty()) null else toNonEmptyMap()
