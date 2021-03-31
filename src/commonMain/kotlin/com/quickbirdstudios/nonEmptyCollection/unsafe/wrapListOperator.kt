@@ -2,7 +2,6 @@
 
 package com.quickbirdstudios.nonEmptyCollection.unsafe
 
-
 import com.quickbirdstudios.nonEmptyCollection.NonEmptyCollection
 import com.quickbirdstudios.nonEmptyCollection.list.NonEmptyList
 import kotlin.experimental.ExperimentalTypeInference

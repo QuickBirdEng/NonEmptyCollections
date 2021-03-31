@@ -15,4 +15,5 @@ interface NonEmptyCollection<out T> : Collection<T> {
     message = "Alternative is never used!",
     replaceWith = ReplaceWith("first()")
 )
+
 fun <T> NonEmptyCollection<T>.firstOr(alternative: () -> T): T = first()
