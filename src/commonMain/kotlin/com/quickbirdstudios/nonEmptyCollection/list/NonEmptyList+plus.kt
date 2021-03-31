@@ -1,27 +1,35 @@
 package com.quickbirdstudios.nonEmptyCollection.list
 
-operator fun <T> NonEmptyList<T>.plus(value: T): NonEmptyList<T> = NonEmptyList(full + value)
+import kotlin.collections.plus as stdPlus
 
-operator fun <T> List<T>.plus(value: T): NonEmptyList<T> = NonEmptyList(this as Collection<T> + value)
+operator fun <T> NonEmptyList<T>.plus(value: T): NonEmptyList<T> = full + value
 
-operator fun <T> NonEmptyList<T>.plus(other: List<T>): NonEmptyList<T> = NonEmptyList(full as Collection<T> + other)
+operator fun <T> List<T>.plus(value: T): NonEmptyList<T> = NonEmptyList(this.stdPlus(value))
+
+operator fun <T> NonEmptyList<T>.plus(other: Iterable<T>): NonEmptyList<T> = NonEmptyList(full.stdPlus(other))
 
 operator fun <T> List<T>.plus(
     other: NonEmptyList<T>
-): NonEmptyList<T> = NonEmptyList(this as Collection<T> + other.full)
+): NonEmptyList<T> = NonEmptyList(this.stdPlus(other.full))
 
 operator fun <T> NonEmptyList<T>.plus(
     other: NonEmptyList<T>
-): NonEmptyList<T> = NonEmptyList(full as Collection<T> + other.full)
-
-operator fun <T> NonEmptyList<T>.plus(
-    other: Iterable<T>
-): NonEmptyList<T> = this + other.toList()
+): NonEmptyList<T> = full + other
 
 operator fun <T> NonEmptyList<T>.plus(
     other: Sequence<T>
-): NonEmptyList<T> = this + other.toList()
+): NonEmptyList<T> = NonEmptyList(
+    ArrayList<T>(full.size).apply {
+        addAll(full)
+        addAll(other)
+    }
+)
 
 operator fun <T> NonEmptyList<T>.plus(
     other: Array<T>
-): NonEmptyList<T> = this + other.toList()
+): NonEmptyList<T> = NonEmptyList(
+    ArrayList<T>(full.size + other.size).apply {
+        addAll(full)
+        addAll(other)
+    }
+)
