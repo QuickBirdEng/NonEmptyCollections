@@ -15,7 +15,7 @@ class ToNonEmptyCollectionTest {
     @Test
     fun toNonEmptyList() {
         assertEquals(nonEmptyListOf(15, 2), listOf(15, 2).toNonEmptyList())
-        assertThrows<NoSuchElementException> {
+        assertThrows<IllegalArgumentException> {
             emptyList<String>().toNonEmptyList()
         }
     }
@@ -25,10 +25,10 @@ class ToNonEmptyCollectionTest {
         assertEquals(nonEmptySetOf(15, 2), listOf(15, 2).toNonEmptySet())
         assertEquals(nonEmptySetOf(15, 2), setOf(15, 2).toNonEmptySet())
 
-        assertThrows<NoSuchElementException> {
+        assertThrows<IllegalArgumentException> {
             emptyList<String>().toNonEmptySet()
         }
-        assertThrows<NoSuchElementException> {
+        assertThrows<IllegalArgumentException> {
             emptySet<String>().toNonEmptySet()
         }
     }
@@ -44,10 +44,10 @@ class ToNonEmptyCollectionTest {
             mapOf(15 to 't', 2 to 'P').toNonEmptyMap()
         )
 
-        assertThrows<NoSuchElementException> {
+        assertThrows<IllegalArgumentException> {
             emptyList<Pair<String, Float>>().toNonEmptyMap()
         }
-        assertThrows<NoSuchElementException> {
+        assertThrows<IllegalArgumentException> {
             emptyMap<String, Double>().toNonEmptyMap()
         }
     }

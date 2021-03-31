@@ -15,4 +15,10 @@ class NonEmptySet<T> internal constructor(
     override fun equals(other: Any?): Boolean = full == other
 
     override fun hashCode(): Int = full.hashCode()
+
+    init {
+        require(full.isNotEmpty()) {
+            "Fatal Error! This is a bug. Please contact the library author."
+        }
+    }
 }

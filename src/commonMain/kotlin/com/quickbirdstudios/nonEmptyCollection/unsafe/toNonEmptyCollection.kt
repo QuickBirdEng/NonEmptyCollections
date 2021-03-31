@@ -9,7 +9,7 @@ import com.quickbirdstudios.nonEmptyCollection.set.nonEmptySetOf
 
 @UnsafeNonEmptyCollectionApi
 fun <T> Iterable<T>.toNonEmptyList(): NonEmptyList<T> = isAlreadyNonEmptyOr {
-    nonEmptyListOf(first(), drop(1))
+    NonEmptyList(toList())
 }
 
 @UnsafeNonEmptyCollectionApi
@@ -19,8 +19,7 @@ fun <T> Iterable<T>.toNonEmptySet(): NonEmptySet<T> = isAlreadyNonEmptyOr {
 
 @UnsafeNonEmptyCollectionApi
 fun <T> Set<T>.toNonEmptySet(): NonEmptySet<T> = isAlreadyNonEmptyOr {
-    val first = first()
-    nonEmptySetOf(first, this - first)
+    NonEmptySet(this)
 }
 
 @UnsafeNonEmptyCollectionApi
@@ -30,9 +29,7 @@ fun <K, V> Iterable<Pair<K, V>>.toNonEmptyMap(): NonEmptyMap<K, V> = isAlreadyNo
 
 @UnsafeNonEmptyCollectionApi
 fun <K, V> Map<K, V>.toNonEmptyMap(): NonEmptyMap<K, V> = isAlreadyNonEmptyOr {
-    val first = entries.first()
-
-    nonEmptyMapOf(first.key to first.value, this - first.key)
+    NonEmptyMap(this)
 }
 
 private inline fun <Empty, reified NonEmpty> Empty.isAlreadyNonEmptyOr(
