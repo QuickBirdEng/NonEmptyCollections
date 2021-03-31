@@ -1,34 +1,18 @@
 package com.quickbirdstudios.nonEmptyCollection.map
 
-import com.quickbirdstudios.nonEmptyCollection.NonEmptyCollection
-import com.quickbirdstudios.nonEmptyCollection.set.NonEmptySet
-import com.quickbirdstudios.nonEmptyCollection.unsafe.UnsafeNonEmptyCollectionApi
-import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptyList
-import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptySet
+class NonEmptyMap<K, out V> internal constructor(internal val full: Map<K, V>) : Map<K, V> by full {
+    constructor(
+        first: Pair<K, V>,
+        rest: Map<K, V>
+    ) : this(LinkedHashMap<K, V>(rest.size + 1).apply { put(first.first, first.second); putAll(rest) })
 
-data class NonEmptyMap<K, V> internal constructor(
-    internal val first: Pair<K, V>,
-    internal val rest: Map<K, V>
-) : Map<K, V> by mapOf(first) + rest {
-
-    private val map by lazy {
-        mapOf(first) + rest
+    init {
+        require(full.isNotEmpty()) { "Fatal Error! This is a bug. Please contact the library author." }
     }
 
-    @OptIn(UnsafeNonEmptyCollectionApi::class)
-    override val entries: NonEmptySet<Map.Entry<K, V>>
-        get() = map.entries.toNonEmptySet()
+    override fun toString(): String = full.toString()
 
-    @OptIn(UnsafeNonEmptyCollectionApi::class)
-    override val keys: NonEmptySet<K>
-        get() = map.keys.toNonEmptySet()
+    override fun equals(other: Any?): Boolean = full == other
 
-    @OptIn(UnsafeNonEmptyCollectionApi::class)
-    override val values: NonEmptyCollection<V>
-        get() = map.values.toNonEmptyList()
-
-    override fun equals(other: Any?): Boolean = toMap() == other
-
-    override fun hashCode(): Int = toMap().hashCode()
-
+    override fun hashCode(): Int = full.hashCode()
 }

@@ -1,34 +1,29 @@
 package com.quickbirdstudios.nonEmptyCollection.set
 
-operator fun <T> NonEmptySet<T>.plus(value: T) = copy(rest = rest + value)
+import kotlin.collections.plus as stdPlus
 
-operator fun <T> Set<T>.plus(value: T) = run {
-    val first = firstOrNull() ?: value
+operator fun <T> NonEmptySet<T>.plus(value: T): NonEmptySet<T> = full + value
 
-    NonEmptySet(
-        first = first,
-        rest = (this.plusElement(value)) - first
-    )
-}
+operator fun <T> Set<T>.plus(value: T): NonEmptySet<T> = NonEmptySet(this.stdPlus(value))
 
-operator fun <T> NonEmptySet<T>.plus(other: Set<T>) = copy(rest = rest union other)
+operator fun <T> NonEmptySet<T>.plus(other: Set<T>) = NonEmptySet(full.stdPlus(other))
 
 operator fun <T> Set<T>.plus(
     other: NonEmptySet<T>
-): NonEmptySet<T> = other + this
+): NonEmptySet<T> = NonEmptySet(this.stdPlus(other.full))
 
 operator fun <T> NonEmptySet<T>.plus(
     other: NonEmptySet<T>
-): NonEmptySet<T> = this as Set<T> + other
+): NonEmptySet<T> = this + other.full
 
 operator fun <T> NonEmptySet<T>.plus(
     other: Iterable<T>
-): NonEmptySet<T> = this + other.toSet()
+): NonEmptySet<T> = NonEmptySet(full.stdPlus(other))
 
 operator fun <T> NonEmptySet<T>.plus(
     other: Sequence<T>
-): NonEmptySet<T> = this + other.toSet()
+): NonEmptySet<T> = NonEmptySet(full.stdPlus(other))
 
 operator fun <T> NonEmptySet<T>.plus(
     other: Array<T>
-): NonEmptySet<T> = this + other.toSet()
+): NonEmptySet<T> = NonEmptySet(full.stdPlus(other))

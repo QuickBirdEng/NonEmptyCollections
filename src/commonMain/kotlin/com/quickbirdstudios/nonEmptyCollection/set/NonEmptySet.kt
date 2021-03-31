@@ -2,12 +2,17 @@ package com.quickbirdstudios.nonEmptyCollection.set
 
 import com.quickbirdstudios.nonEmptyCollection.NonEmptyCollection
 
-data class NonEmptySet<T> internal constructor(
-    internal val first: T,
-    internal val rest: Set<T>
-) : Set<T> by rest.plusElement(first), NonEmptyCollection<T> {
+class NonEmptySet<T> internal constructor(
+    internal val full: Set<T>
+) : Set<T> by full, NonEmptyCollection<T> {
+    constructor(
+        first: T,
+        rest: Set<T>
+    ) : this(HashSet<T>(rest.size + 1).apply { add(first); addAll(rest) })
 
-    override fun equals(other: Any?): Boolean = toSet() == other
+    override fun toString(): String = full.toString()
 
-    override fun hashCode(): Int = toSet().hashCode()
+    override fun equals(other: Any?): Boolean = full == other
+
+    override fun hashCode(): Int = full.hashCode()
 }
