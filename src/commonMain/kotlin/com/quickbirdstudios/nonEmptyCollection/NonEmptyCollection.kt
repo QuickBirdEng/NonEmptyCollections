@@ -7,19 +7,12 @@ interface NonEmptyCollection<T> : Collection<T> {
         message = "Is never null!",
         replaceWith = ReplaceWith("first()")
     )
-    fun firstOrNull(): T? = throw NotImplementedError()
+    fun firstOrNull(): T = first()
 
     @Deprecated(
         level = DeprecationLevel.ERROR,
         message = "Alternative is never used!",
         replaceWith = ReplaceWith("first()")
     )
-    fun firstOr(alternative: () -> T): T = throw NotImplementedError()
-
-    @Deprecated(
-        level = DeprecationLevel.ERROR,
-        message = "Alternative is never used!",
-        replaceWith = ReplaceWith("")
-    )
-    fun <R> ifEmpty(defaultValue: () -> R): R = throw NotImplementedError()
+    fun firstOr(alternative: () -> T): T = first()
 }
