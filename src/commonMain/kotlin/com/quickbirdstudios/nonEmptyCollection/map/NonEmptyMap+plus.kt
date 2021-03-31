@@ -4,9 +4,13 @@ import kotlin.collections.plus as stdPlus
 
 operator fun <K, V> NonEmptyMap<K, V>.plus(entry: Pair<K, V>): NonEmptyMap<K, V> = full + entry
 
-operator fun <K, V> Map<K, V>.plus(entry: Pair<K, V>): NonEmptyMap<K, V> = NonEmptyMap(this.stdPlus(entry))
+operator fun <K, V> Map<K, V>.plus(
+    entry: Pair<K, V>
+): NonEmptyMap<K, V> = NonEmptyMap(this.stdPlus(entry))
 
-operator fun <K, V> NonEmptyMap<K, V>.plus(other: Map<K, V>): NonEmptyMap<K, V> = NonEmptyMap(full.stdPlus(other))
+operator fun <K, V> NonEmptyMap<K, V>.plus(
+    other: Map<K, V>
+): NonEmptyMap<K, V> = NonEmptyMap(full.stdPlus(other))
 
 operator fun <K, V> Map<K, V>.plus(
     other: NonEmptyMap<K, V>

@@ -6,7 +6,9 @@ operator fun <T> NonEmptyList<T>.plus(value: T): NonEmptyList<T> = full + value
 
 operator fun <T> List<T>.plus(value: T): NonEmptyList<T> = NonEmptyList(this.stdPlus(value))
 
-operator fun <T> NonEmptyList<T>.plus(other: Iterable<T>): NonEmptyList<T> = NonEmptyList(full.stdPlus(other))
+operator fun <T> NonEmptyList<T>.plus(
+    other: Iterable<T>
+): NonEmptyList<T> = NonEmptyList(full.stdPlus(other))
 
 operator fun <T> List<T>.plus(
     other: NonEmptyList<T>
