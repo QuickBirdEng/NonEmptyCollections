@@ -73,7 +73,7 @@ allprojects {
 ```kotlin
 dependencies {
     ...
-    implementation("com.github.quickbirdstudios.NonEmptyCollections:NonEmptyCollections:1.0.0")
+    implementation("com.github.quickbirdstudios.NonEmptyCollections:NonEmptyCollections:1.1.0")
 }
 ```
 
